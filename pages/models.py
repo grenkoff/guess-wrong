@@ -18,6 +18,7 @@ class HomePage(SingletonModel):
 
     class Meta:
         verbose_name = "Homepage"
+        verbose_name_plural = "Homepage"
 
     def __str__(self):
         return self.name
