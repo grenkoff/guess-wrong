@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  {{ home_view.title }}
+{% endblock %}
+
+{% block content %}
+  <div>
+    <h1>{{ home_view.title }}</h1>
+    {{ home_view.description|safe }}
+  </div>
+{% endblock %}
