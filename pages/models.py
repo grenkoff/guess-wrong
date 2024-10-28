@@ -12,6 +12,7 @@ class SingletonModel(models.Model):
 
 
 class HomePage(SingletonModel):
+    domain = models.CharField(max_length=200, default="Default Domain")
     title = models.CharField(max_length=200, default="Default Title")
     name = models.CharField(max_length=200, default="Default Name")
     description = models.TextField()

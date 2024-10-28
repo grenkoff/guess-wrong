@@ -3,11 +3,9 @@
   <head>
     <title>
       {% if is_home %}
-        {{ home_view.title }}
+        {{ home_view.domain }} • {{ home_view.title }}
       {% else %}
-        {% block title %}
-
-        {% endblock %} — GuessWrong.com
+        {{ home_view.title }} • {{ home_view.domain }}
       {% endif %}
     </title>
     <meta charset="UTF-8">
