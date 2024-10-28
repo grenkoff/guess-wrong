@@ -1,0 +1,10 @@
+:root {
+  --night: #000b29;
+  --phonebooth: #d70026;
+  --pearl: #f8f5f2;
+  --flash: #edb83d;
+}
+
+body {
+  font-family: 'Ubuntu Mono', monospace;
+}

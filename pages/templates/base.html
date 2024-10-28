@@ -10,9 +10,17 @@
     </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
   </head>
   <body>
+    {% include 'navbar.html' %}
+
     {% block content %}
     {% endblock content %}
+
+    <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.min.js' %}"></script>
   </body>
 </html>
