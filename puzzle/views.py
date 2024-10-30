@@ -4,8 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
 
-from .models import RealWord, WrongWord
-from pages.models import PuzzlePage
+from .models import PuzzlePage, RealWord, WrongWord
 
 
 def puzzle_view(request):
@@ -50,17 +49,17 @@ def puzzle_view(request):
         # Очищаем текущий вопрос из сессии и генерируем новый
         del request.session['options']
         del request.session['wrong_word']
-        
+
         # Генерируем новый вопрос
         options, wrong_word, error_message = generate_new_question()
         if error_message:
             return HttpResponse(error_message)
 
-        return render(request, 'pages/puzzle.html', {
+        return render(request, 'puzzle/puzzle.html', {
             'options': options,
             'message': message,
             'puzzle_page': puzzle_page
         })
 
     # При GET-запросе отображаем начальный вопрос
-    return render(request, 'pages/puzzle.html', {'options': options, 'puzzle_page': puzzle_page})
+    return render(request, 'puzzle/puzzle.html', {'options': options, 'puzzle_page': puzzle_page})

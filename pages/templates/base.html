@@ -18,8 +18,10 @@
   <body>
     {% include 'navbar.html' %}
 
-    {% block content %}
-    {% endblock content %}
+    <div class="container text-start my-4">
+      {% block content %}
+      {% endblock content %}
+    </div>
 
     <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.min.js' %}"></script>
   </body>
