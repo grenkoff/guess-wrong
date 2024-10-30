@@ -23,7 +23,8 @@ from pages.views import page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("pages.urls", namespace='pages')),
+    path('puzzle/', include('puzzle.urls', namespace='puzzle')),
+    path('', include('pages.urls', namespace='pages')),
 ]
 
 handler404 = page_not_found

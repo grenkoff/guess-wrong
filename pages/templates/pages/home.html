@@ -2,11 +2,11 @@
 {% load static %}
 {% block title %}
   {{ home_view.title }}
-{% endblock %}
+{% endblock title%}
 
 {% block content %}
   <div>
     <h1>{{ home_view.title }}</h1>
     {{ home_view.description|safe }}
   </div>
-{% endblock %}
+{% endblock content %}

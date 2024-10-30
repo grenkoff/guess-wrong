@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Local
     'pages.apps.PagesConfig',
+    'puzzle.apps.PuzzleConfig',
 ]
 
 MIDDLEWARE = [

@@ -5,7 +5,7 @@
       {% if is_home %}
         {{ home_view.domain }} • {{ home_view.title }}
       {% else %}
-        {{ home_view.title }} • {{ home_view.domain }}
+        {% block title %}{% endblock %} • {{ home_view.domain }}
       {% endif %}
     </title>
     <meta charset="UTF-8">
