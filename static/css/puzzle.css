@@ -1,0 +1,22 @@
+.custom-btn {
+  font-size: inherit;
+  background-color: var(--white);
+  color: var(--night);
+  border: 1px solid var(--lightgray);
+  transition: border-color 0.1s;
+  text-align: left;
+  padding-left: 10px;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.custom-btn:hover {
+  background-color: var(--white);
+  border-color: var(--flash);
+}
+
+.custom-btn:active {
+  background-color: var(--white) !important;
+  border-color: var(--flash) !important;
+}
