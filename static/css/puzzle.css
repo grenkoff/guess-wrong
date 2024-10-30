@@ -20,3 +20,22 @@
   background-color: var(--white) !important;
   border-color: var(--flash) !important;
 }
+
+.btn-disabled {
+  /* opacity: 0.5; */
+  /* cursor: not-allowed; */
+  background-color: var(--white) !important;
+  border-color: red !important;
+}
+
+.btn-correct {
+  background-color: #edb83d !important;
+}
+
+.success-message {
+  color: green;
+}
+
+.fail-message {
+  color: var(--phonebooth);
+}
