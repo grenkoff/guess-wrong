@@ -19,7 +19,7 @@ def puzzle_view(request):
         request.session['options'] = [word.word for word in options]
         request.session['wrong_word'] = wrong_word.word
         request.session['incorrect_attempts'] = []  # Сбрасываем предыдущие попытки
-        request.session['message'] = mark_safe("Guess the <u>wrong</u> word.")  # Начальное сообщение
+        request.session['message'] = mark_safe("Hello!<br>Guess the <u>wrong</u> word.")  # Начальное сообщение
 
         return request.session['options'], wrong_word.word, ""
 
@@ -39,14 +39,14 @@ def puzzle_view(request):
         selected_word = request.POST.get('selected_word')
 
         if selected_word == wrong_word:
-            message = mark_safe("<span class='success-message'>You got it!</span> Guess the <u>wrong</u> word now.")
+            message = mark_safe("<span class='success-message'>You got it!</span><br>Guess the <u>wrong</u> word now.")
             del request.session['options']
             del request.session['wrong_word']
             options, wrong_word, error_message = generate_new_question()
             if error_message:
                 return HttpResponse(error_message)
         else:
-            message = mark_safe(f"<span class='fail-message'>The word</span> <strong>'{selected_word}'</strong> <span class='fail-message'>exists.</span> Try to guess the <u>wrong</u> word again.")
+            message = mark_safe(f"<span class='fail-message'>The word</span> <strong>'{selected_word}'</strong> <span class='fail-message'>exists.</span><br>Try to guess the <u>wrong</u> word again.")
             if 'incorrect_attempts' not in request.session:
                 request.session['incorrect_attempts'] = []
             request.session['incorrect_attempts'].append(selected_word)
