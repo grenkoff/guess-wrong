@@ -6,10 +6,13 @@ from django.views.decorators.csrf import csrf_exempt
 from google.oauth2 import id_token
 from google.auth.transport import requests
 
+from .models import SigninPage
+
 
 @csrf_exempt
 def sign_in(request):
-    return render(request, 'sim/sign-in.html')
+    signin_view = SigninPage.get_instance()
+    return render(request, 'sim/sign-in.html', {'signin_view': signin_view})
 
 
 @csrf_exempt
@@ -31,9 +34,9 @@ def auth_receiver(request):
     # You could also authenticate the user here using the details from Google (https://docs.djangoproject.com/en/4.2/topics/auth/default/#how-to-log-a-user-in)
     request.session['user_data'] = user_data
 
-    return redirect('sign_in')
+    return redirect('pages:home')
 
 
 def sign_out(request):
     del request.session['user_data']
-    return redirect('sign_in')
+    return redirect('pages:home')

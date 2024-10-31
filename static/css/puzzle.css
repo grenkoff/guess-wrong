@@ -1,6 +1,6 @@
 .custom-btn {
   font-size: inherit;
-  background-color: var(--white);
+  background-color: var(--ivory);
   color: var(--night);
   border: 1px solid var(--lightgray);
   transition: border-color 0.1s;
@@ -12,19 +12,19 @@
 }
 
 .custom-btn:hover {
-  background-color: var(--white);
+  background-color: var(--ivory);
   border-color: var(--flash);
 }
 
 .custom-btn:active {
-  background-color: var(--white) !important;
+  background-color: var(--ivory) !important;
   border-color: var(--flash) !important;
 }
 
 .btn-disabled {
   /* opacity: 0.5; */
   /* cursor: not-allowed; */
-  background-color: var(--white) !important;
+  background-color: var(--ivory) !important;
   border-color: red !important;
 }
 

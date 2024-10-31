@@ -18,7 +18,15 @@
         </li>
       </ul>
       <span class="navbar-text">
-        Login
+        {% if request.session.user_data %}
+        <div class="d-flex align-items-center">
+          <span>Hi, {{ request.session.user_data.given_name }}</span>
+          <img src="{{ request.session.user_data.picture }}" alt="User picture" class="rounded-circle ms-2" style="width: 30px; height: 30px;">
+          <a href="/sign-out" class="nav-link ms-2">Sign out</a>
+        </div>        
+        {% else %}
+        <a class="nav-link" href="{% url 'sim:sign_in' %}">Sign in</a>
+        {% endif %}
       </span>
     </div>
   </div>

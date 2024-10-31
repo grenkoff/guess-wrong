@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('puzzle/', include('puzzle.urls', namespace='puzzle')),
     path('', include('pages.urls', namespace='pages')),
-    path('', include('sim.urls')),
+    path('', include('sim.urls', namespace='sim')),
 ]
 
 handler404 = page_not_found
