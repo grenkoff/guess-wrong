@@ -31,6 +31,7 @@ class PuzzlePage(SingletonModel):
 
 class RealWord(models.Model):
     word = models.CharField(max_length=50, unique=True)
+    definition = models.TextField(max_length=1000)
 
     def __str__(self):
         return self.word

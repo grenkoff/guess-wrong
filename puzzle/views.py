@@ -1,8 +1,17 @@
 import random
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
 from .models import PuzzlePage, RealWord, WrongWord
+
+
+def word_view(request, word):
+    word_page = get_object_or_404(RealWord, word=word)
+
+    return render(request, 'puzzle/word.html', {
+        'word_page': word_page
+    })
+
 
 def puzzle_view(request):
     puzzle_page = PuzzlePage.objects.first()
