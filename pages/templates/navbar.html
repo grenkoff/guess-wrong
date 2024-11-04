@@ -1,33 +1,63 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container">
-    <a class="navbar-brand" href="{% url 'pages:home' %}">GuessWrong</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <div class="container position-relative d-flex justify-content-between align-items-center">
+
+    <a class="navbar-brand mx-auto fs-4" href="{% url 'pages:home' %}" style="font-style: italic;">GuessWrong</a>
+
+    <button id="navbar-toggler" class="navbar-toggler custom-toggler position-absolute end-0 me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-three-dots-vertical" id="toggler-icon"></i>
     </button>
+
+    <!-- Collapsible Menu Links -->
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Play</a>
-        </li>
-        <li class="nav-item">
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+        <li class="nav-item ms-3">
           <a class="nav-link" href="{% url 'puzzle:puzzle' %}">Puzzle</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Donate</a>
+
+        <li class="nav-item ms-3">
+          <a class="nav-link" href="#">Play</a>
         </li>
-      </ul>
-      <span class="navbar-text">
+
+        <!-- Sign in Link for small screens -->
         {% if request.session.user_data %}
-        <div class="d-flex align-items-center">
-          <span>Hi, {{ request.session.user_data.given_name }}</span>
-          <img src="{{ request.session.user_data.picture }}" alt="User picture" class="rounded-circle ms-2" style="width: 30px; height: 30px;">
-          <a href="/sign-out" class="nav-link ms-2">Sign out</a>
-        </div>        
+        <span class="navbar-text">
+          <div class="d-flex align-items-center d-lg-none">
+            <!-- <span>Hi, {{ request.session.user_data.given_name }}</span> -->
+            <a href="/sign-out" class="nav-link ms-2">Sign out</a>
+            <img src="{{ request.session.user_data.picture }}" alt="User picture" class="rounded-circle ms-2" style="width: 30px; height: 30px;">
+          </div>
+        </span>
         {% else %}
-        <a class="nav-link" href="{% url 'sim:sign_in' %}">Sign in</a>
+        <li class="nav-item ms-3 d-lg-none"> <!-- Only visible on small screens -->
+          <a class="nav-link" href="{% url 'sim:sign_in' %}">Sign in</a>
+        </li>
         {% endif %}
+      </ul>
+    </div>
+
+    <!-- User Authentication Links for large screens (right-aligned) -->
+    <div class="d-none d-lg-flex align-items-center ms-auto">
+      {% if request.session.user_data %}
+      <span class="navbar-text">
+        <div class="d-flex align-items-center">
+          <!-- <span>Hi, {{ request.session.user_data.given_name }}</span> -->
+          <a href="/sign-out" class="nav-link ms-2">Sign out</a>
+          <img src="{{ request.session.user_data.picture }}" alt="User picture" class="rounded-circle ms-2" style="width: 30px; height: 30px;">
+        </div>
       </span>
+      {% else %}
+      <a class="nav-link" href="{% url 'sim:sign_in' %}">Sign in</a>
+      {% endif %}
     </div>
   </div>
 </nav>
+
+<!-- JavaScript to toggle the button icon -->
+<script>
+  document.getElementById('navbar-toggler').addEventListener('click', function () {
+    const icon = document.getElementById('toggler-icon');
+    icon.classList.toggle('bi-three-dots-vertical');
+    icon.classList.toggle('bi-x-lg');
+  });
+</script>

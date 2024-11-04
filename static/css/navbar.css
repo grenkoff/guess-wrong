@@ -5,3 +5,16 @@
   background-color: var(--flash) !important;
   color: var(--night) !important;
 }
+
+.navbar-toggler {
+  top: 0%;
+}
+
+.custom-toggler {
+  height: 40px;
+  width: 50px;
+}
+
+.custom-toggler:focus {
+  box-shadow: none;
+}
