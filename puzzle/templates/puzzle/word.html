@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_filters %}
 {% block title %}
   English word {{ word_page.word }}
 {% endblock title %}
@@ -9,34 +10,53 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <h1 class="mb-4 text-center">{{ word_page.word }}</h1>
+
         {% if word_page.transcription %}
           <p class="mb-4 text-center">/ {{ word_page.transcription }} /</p>
         {% endif %}
+
         <p class="text-left">{{ word_page.definition }}</p>
+
         {% if word_page.image %}
           <div class="text-center mb-4">
             <img src="{{ word_page.image.url }}" alt="Image of {{ word_page.word }}" class="img-fluid">
           </div>
         {% endif %}
+
         {% if examples %}
           <h2>Examples</h2>
-          {% for example in examples %}
-            <p class="mb-4"><i>* {{ example.text }}</i></p>
-          {% endfor %}
+          <ul>
+            {% for example in examples %}
+              <li><i>{{ example.text|highlight_word:word_page.word|safe }}</i></li>
+            {% endfor %}
+          </ul>
         {% endif %}
+
+
         {% if synonyms %}
           <h2>Synonyms</h2>
           <p class="mb-4">
             {% for synonym in synonyms %}
-              {{ synonym.text }}{% if not forloop.last %}, {% endif %}
+              {% if synonym.exists %}
+                <a href="{% url 'puzzle:word_view' synonym.text|lower %}">{{ synonym.text|lower|capfirst }}</a>
+              {% else %}
+                {{ synonym.text|lower|capfirst }}
+              {% endif %}
+              {% if not forloop.last %}• {% endif %}
             {% endfor %}
           </p>
         {% endif %}
+
         {% if antonyms %}
           <h2>Antonyms</h2>
           <p class="mb-4">
             {% for antonym in antonyms %}
-              {{ antonym.text }}{% if not forloop.last %}, {% endif %}
+              {% if antonym.exists %}
+                <a href="{% url 'word_view' antonym.text|lower %}">{{ antonym.text|lower|capfirst }}</a>
+              {% else %}
+                {{ antonym.text|lower|capfirst }}
+              {% endif %}
+              {% if not forloop.last %}• {% endif %}
             {% endfor %}
           </p>
         {% endif %}

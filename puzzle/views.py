@@ -6,10 +6,26 @@ from .models import PuzzlePage, RealWord, WrongWord, Example, Synonym, Antonym
 
 
 def word_view(request, word):
-    word_page = get_object_or_404(RealWord, word=word)
-    examples = Example.objects.all()
-    synonyms = Synonym.objects.all()
-    antonyms = Antonym.objects.all()
+    word_page = get_object_or_404(RealWord, word__iexact=word)  # игнорируем регистр при поиске
+
+    examples = Example.objects.filter(word=word_page)
+
+    # Проверяем наличие связанных RealWord для синонимов и антонимов с учетом регистра
+    synonyms = [
+        {
+            'text': synonym.text,
+            'exists': RealWord.objects.filter(word__iexact=synonym.text).exists()
+        }
+        for synonym in Synonym.objects.filter(word=word_page)
+    ]
+
+    antonyms = [
+        {
+            'text': antonym.text,
+            'exists': RealWord.objects.filter(word__iexact=antonym.text).exists()
+        }
+        for antonym in Antonym.objects.filter(word=word_page)
+    ]
 
     return render(request, 'puzzle/word.html', {
         'word_page': word_page,
