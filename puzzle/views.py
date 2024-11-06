@@ -2,14 +2,20 @@ import random
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
-from .models import PuzzlePage, RealWord, WrongWord
+from .models import PuzzlePage, RealWord, WrongWord, Example, Synonym, Antonym
 
 
 def word_view(request, word):
     word_page = get_object_or_404(RealWord, word=word)
+    examples = Example.objects.all()
+    synonyms = Synonym.objects.all()
+    antonyms = Antonym.objects.all()
 
     return render(request, 'puzzle/word.html', {
-        'word_page': word_page
+        'word_page': word_page,
+        'examples': examples,
+        'synonyms': synonyms,
+        'antonyms': antonyms,
     })
 
 
