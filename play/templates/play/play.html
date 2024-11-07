@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-  {{ puzzle_page.title }}
+  {{ play_page.title }}
 {% endblock title %}
 
 {% block content %}
   <div class="container my-4">
-    <h1 class="mb-4">{{ puzzle_page.title }}</h1>
+    <h1 class="mb-4">{{ play_page.title }}</h1>
 
     {% if message %}
       <p>{{ message|safe }}</p>

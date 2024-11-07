@@ -1,42 +1,16 @@
 import random
-from django.shortcuts import render, get_object_or_404
+
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
-from .models import PuzzlePage, RealWord, WrongWord, Example, Synonym, Antonym
+
+from words.models import RealWord
+from wrong.models import WrongWord
+from .models import PlayPage
 
 
-def word_view(request, word):
-    word_page = get_object_or_404(RealWord, word__iexact=word)  # игнорируем регистр при поиске
-
-    examples = Example.objects.filter(word=word_page)
-
-    # Проверяем наличие связанных RealWord для синонимов и антонимов с учетом регистра
-    synonyms = [
-        {
-            'text': synonym.text,
-            'exists': RealWord.objects.filter(word__iexact=synonym.text).exists()
-        }
-        for synonym in Synonym.objects.filter(word=word_page)
-    ]
-
-    antonyms = [
-        {
-            'text': antonym.text,
-            'exists': RealWord.objects.filter(word__iexact=antonym.text).exists()
-        }
-        for antonym in Antonym.objects.filter(word=word_page)
-    ]
-
-    return render(request, 'puzzle/word.html', {
-        'word_page': word_page,
-        'examples': examples,
-        'synonyms': synonyms,
-        'antonyms': antonyms,
-    })
-
-
-def puzzle_view(request):
-    puzzle_page = PuzzlePage.objects.first()
+def play_view(request):
+    play_page = PlayPage.objects.first()
 
     # Функция для генерации нового вопроса
     def generate_new_question():
@@ -85,18 +59,18 @@ def puzzle_view(request):
 
         request.session['message'] = message  # Сохраняем текущее сообщение в сессии
 
-        return render(request, 'puzzle/puzzle.html', {
+        return render(request, 'play/play.html', {
             'options': options,
             'message': message,
-            'puzzle_page': puzzle_page,
+            'play_page': play_page,
             'incorrect_attempts': request.session.get('incorrect_attempts', []),
             'is_correct': selected_word == wrong_word
         })
 
     # Начальный GET-запрос
-    return render(request, 'puzzle/puzzle.html', {
+    return render(request, 'play/play.html', {
         'options': options,
-        'puzzle_page': puzzle_page,
+        'play_page': play_page,
         'message': message,
         'incorrect_attempts': request.session.get('incorrect_attempts', [])
     })

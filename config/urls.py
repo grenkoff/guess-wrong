@@ -23,7 +23,8 @@ from pages.views import page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('puzzle/', include('puzzle.urls', namespace='puzzle')),
+    path('words/', include('words.urls', namespace='words')),
+    path('play/', include('play.urls', namespace='play')),
     path('', include('pages.urls', namespace='pages')),
     path('', include('sim.urls', namespace='sim')),
 ]
