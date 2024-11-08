@@ -1,0 +1,12 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <h2>Импорт данных из JSON файла</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Загрузить</button>
+  </form>
+  <br>
+  <a href="{% url 'admin:words_realword_changelist' %}">Вернуться к списку слов</a>
+{% endblock %}

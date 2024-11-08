@@ -1,0 +1,50 @@
+[
+    {
+        "word": "job",
+        "transcription": null,
+        "definition": "sdfgnbfsdfdd",
+        "image": null,
+        "examples": [
+            {
+                "text": "sdfg"
+            }
+        ],
+        "synonyms": [
+            {
+                "text": "werty"
+            }
+        ],
+        "antonyms": [
+            {
+                "text": "wergfh"
+            }
+        ]
+    },
+    {
+        "word": "cat",
+        "transcription": null,
+        "definition": "ergbfedwefgb",
+        "image": null,
+        "examples": [
+            {
+                "text": "erg"
+            }
+        ],
+        "synonyms": [
+            {
+                "text": "ewrtgh"
+            },
+            {
+                "text": "regn"
+            }
+        ],
+        "antonyms": [
+            {
+                "text": "erfghn"
+            },
+            {
+                "text": "rghn"
+            }
+        ]
+    }
+]
