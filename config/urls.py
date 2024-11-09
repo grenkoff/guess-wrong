@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 from pages.views import page_not_found
-from words.views import export_data_to_json, import_data_from_json
+from words.views import wordlist_view, export_data_to_json, import_data_from_json
 
 urlpatterns = [
     path('admin/', admin.site.urls),

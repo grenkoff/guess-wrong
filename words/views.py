@@ -1,5 +1,6 @@
 import os
 import json
+import string
 
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
@@ -38,6 +39,34 @@ def word_view(request, word):
         'synonyms': synonyms,
         'antonyms': antonyms,
     })
+
+
+# def wordlist_view(request):
+#     words = RealWord.objects.all()  # Retrieve all words from the RealWord table
+#     return render(request, 'words/wordlist.html', {'words': words})
+
+
+def wordlist_view(request):
+    # Get all words from the database
+    words = RealWord.objects.all()
+
+    # Create a dictionary to organize words by their starting letter
+    words_by_letter = {}
+    for word in words:
+        first_letter = word.word[0].upper()
+        if first_letter not in words_by_letter:
+            words_by_letter[first_letter] = []
+        words_by_letter[first_letter].append(word)
+
+    # List of letters for alphabet navigation
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    context = {
+        'words_by_letter': words_by_letter,
+        'alphabet': alphabet,
+    }
+
+    return render(request, 'words/wordlist.html', context)
 
 
 def export_data_to_json(request):

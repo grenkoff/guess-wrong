@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+  Wordlist
+{% endblock title %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="mb-4">Word List</h1>
+
+    <!-- Alphabet Navigation -->
+    <div class="mb-4">
+      <ul class="list-inline">
+        {% for letter in alphabet %}
+          <li class="list-inline-item">
+            <a href="#letter-{{ letter }}" class="text-decoration-none">{{ letter }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Word Groups by Letter -->
+    <div class="row">
+      {% for letter, words in words_by_letter.items %}
+        {% if words %}
+          <div class="col-md-3 mb-4">
+            <h2 id="letter-{{ letter }}">{{ letter }}</h2>
+            <ul class="list-group">
+              {% for word in words %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <a href="{% url 'words:word_view' word=word.word %}" class="text-decoration-none">{{ word.word }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}
+
+
+
+
+
