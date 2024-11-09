@@ -27,10 +27,21 @@ class AntonymInline(admin.TabularInline):
 
 @admin.register(RealWord)
 class RealWordAdmin(admin.ModelAdmin):
-    list_display = ('word',)
+    list_display = ('word','transcription', 'short_definition')
     search_fields = ('word',)
     inlines = [ExampleInline, SynonymInline, AntonymInline]
     change_list_template = "admin/realword_changelist.html"
+
+    def short_definition(self, obj):
+        # Разбиваем строку на слова и берем первые 6
+        definition_words = obj.definition.split()[:10]
+        # Собираем строку из первых 6 слов и добавляем многоточие
+        short_def = ' '.join(definition_words)
+        if len(obj.definition.split()) > 10:
+            short_def += '...'
+        return short_def
+    
+    short_definition.short_description = 'Definition'
 
     def get_urls(self):
         urls = super().get_urls()

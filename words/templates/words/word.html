@@ -16,7 +16,7 @@
           <p class="mb-4 text-center">/ {{ word_page.transcription }} /</p>
         {% endif %}
 
-        <p class="text-left">{{ word_page.definition }}</p>
+        <p class="text-left">{{ word_page.definition|capfirst }}</p>
 
         {% if word_page.image %}
           <div class="text-center mb-4">
@@ -38,9 +38,9 @@
           <p class="mb-4">
             {% for synonym in synonyms %}
               {% if synonym.exists %}
-                <a href="{% url 'words:word_view' synonym.text|lower %}">{{ synonym.text|lower|capfirst }}</a>
+                <a href="{% url 'words:word_view' synonym.text|lower %}">{{ synonym.text|lower }}</a>
               {% else %}
-                {{ synonym.text|lower|capfirst }}
+                {{ synonym.text|lower }}
               {% endif %}
               {% if not forloop.last %}• {% endif %}
             {% endfor %}
@@ -52,9 +52,9 @@
           <p class="mb-4">
             {% for antonym in antonyms %}
               {% if antonym.exists %}
-                <a href="{% url 'words:word_view' antonym.text|lower %}">{{ antonym.text|lower|capfirst }}</a>
+                <a href="{% url 'words:word_view' antonym.text|lower %}">{{ antonym.text|lower }}</a>
               {% else %}
-                {{ antonym.text|lower|capfirst }}
+                {{ antonym.text|lower }}
               {% endif %}
               {% if not forloop.last %}• {% endif %}
             {% endfor %}

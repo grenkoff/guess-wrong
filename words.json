@@ -1,122 +1,26 @@
 [
     {
-        "word": "a",
-        "transcription": "ə",
-        "definition": "The indefinite article 'a' is used before words that begin with a consonant sound to introduce something non-specific or to mention something for the first time. It indicates a single, general item.",
+        "word": "by",
+        "transcription": "baɪ",
+        "definition": "A preposition used to indicate the means or method by which something is done, or to express proximity or the agent performing an action. It can also suggest a time or place, indicating the agent or source of an action.",
         "examples": [
-            "She found a book on the table.",
-            "There is a cat in the garden.",
-            "I saw a movie last night."
+            "She traveled by train to work every day.",
+            "The book was written by a famous author.",
+            "I like to relax by the beach during the summer."
         ],
-        "synonyms": [],
-        "antonyms": []
+        "synonyms": ["through", "via", "with"],
+        "antonyms": ["away", "apart", "from"]
     },
     {
-        "word": "abandon",
-        "transcription": "əˈbændən",
-        "definition": "To abandon means to leave someone or something behind with no intention of returning or to stop supporting or looking after someone or something. Often, it involves leaving someone or something in a difficult situation.",
+        "word": "bye",
+        "transcription": "baɪ",
+        "definition": "A casual or informal way of saying farewell or goodbye, often used when parting with someone or leaving a place. It is commonly used in spoken language and informal written communication.",
         "examples": [
-            "She had to abandon her car in the snow.",
-            "He felt abandoned when his friends left him alone.",
-            "The project was abandoned due to a lack of funds."
+            "I have to leave now, bye!",
+            "We said our goodbyes and waved, 'bye' until next time.",
+            "After the meeting, everyone said their byes and left."
         ],
-        "synonyms": ["desert", "forsake", "leave"],
-        "antonyms": ["retain", "keep", "support"]
-    },
-    {
-        "word": "ability",
-        "transcription": "əˈbɪlɪti",
-        "definition": "The power, skill, or capability to do something. Ability is a person's natural or acquired talent or skill to accomplish tasks successfully.",
-        "examples": [
-            "She has the ability to solve complex problems.",
-            "His ability to communicate made him a great leader.",
-            "They praised her ability to work under pressure."
-        ],
-        "synonyms": ["capability", "skill", "competence"],
-        "antonyms": ["inability", "incompetence", "incapacity"]
-    },
-    {
-        "word": "able",
-        "transcription": "ˈeɪbl",
-        "definition": "Having the power, skill, or means to do something; capable of doing something. Being able means possessing the qualities needed to accomplish something.",
-        "examples": [
-            "She is able to solve the puzzle quickly.",
-            "He was able to lift the heavy box without assistance.",
-            "They are able to work independently."
-        ],
-        "synonyms": ["capable", "competent", "qualified"],
-        "antonyms": ["incapable", "incompetent", "unable"]
-    },
-    {
-        "word": "about",
-        "transcription": "əˈbaʊt",
-        "definition": "In reference to or concerning a particular subject. It is used to indicate what a discussion, book, or event is related to or focused on.",
-        "examples": [
-            "She read a book about history.",
-            "He is curious about the new project.",
-            "We talked about the upcoming event."
-        ],
-        "synonyms": ["regarding", "concerning", "related to"],
-        "antonyms": []
-    },
-    {
-        "word": "above",
-        "transcription": "əˈbʌv",
-        "definition": "In a higher position than something else, either physically or in rank or level. It is often used to describe spatial relationships or levels of importance.",
-        "examples": [
-            "The airplane flew above the clouds.",
-            "Her score was above average.",
-            "The temperature rose above 30 degrees Celsius."
-        ],
-        "synonyms": ["over", "higher than", "on top of"],
-        "antonyms": ["below", "under", "beneath"]
-    },
-    {
-        "word": "abroad",
-        "transcription": "əˈbrɔd",
-        "definition": "In or to a foreign country or countries. Often used to describe someone who is traveling or staying outside their home country for an extended period.",
-        "examples": [
-            "She plans to study abroad next year.",
-            "They went abroad for their vacation.",
-            "Living abroad has broadened his perspective."
-        ],
-        "synonyms": ["overseas", "internationally"],
-        "antonyms": ["domestically", "home", "locally"]
-    },
-    {
-        "word": "absolute",
-        "transcription": "ˈæbsəˌlut",
-        "definition": "Complete, total, or perfect; not limited by any restrictions or conditions. It often implies an extreme or unchanging quality or state.",
-        "examples": [
-            "She has absolute trust in him.",
-            "It was an absolute success.",
-            "They were in absolute agreement on the issue."
-        ],
-        "synonyms": ["total", "complete", "perfect"],
-        "antonyms": ["partial", "relative", "limited"]
-    },
-    {
-        "word": "absolutely",
-        "transcription": "ˌæbsəˈlutli",
-        "definition": "Without any doubt or qualification; completely or totally. It is often used to emphasize an opinion or statement.",
-        "examples": [
-            "She is absolutely sure of her answer.",
-            "I absolutely love this place.",
-            "The movie was absolutely fantastic."
-        ],
-        "synonyms": ["totally", "completely", "utterly"],
-        "antonyms": ["partially", "incompletely", "somewhat"]
-    },
-    {
-        "word": "academic",
-        "transcription": "ˌækəˈdɛmɪk",
-        "definition": "Related to education, scholarship, and formal studies. It often describes things associated with schools, universities, or scholarly pursuits.",
-        "examples": [
-            "She achieved high academic standards.",
-            "The academic year begins in September.",
-            "His academic career spanned over 30 years."
-        ],
-        "synonyms": ["educational", "scholarly", "intellectual"],
-        "antonyms": ["non-academic", "practical", "informal"]
+        "synonyms": ["goodbye", "farewell", "see you"],
+        "antonyms": ["hello", "greeting", "welcome"]
     }
 ]
