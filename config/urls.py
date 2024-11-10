@@ -20,13 +20,13 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 from pages.views import page_not_found
-from words.views import wordlist_view, export_data_to_json, import_data_from_json
+from words.views import import_data_from_json #export_data_to_json,
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('words/', include('words.urls', namespace='words')),
     path('play/', include('play.urls', namespace='play')),
-    path('export-json/', export_data_to_json, name='export_json'),
+    # path('export-json/', export_data_to_json, name='export_json'),
     path('import-json/', import_data_from_json, name='import_json'),
     path('', include('pages.urls', namespace='pages')),
     path('', include('sim.urls', namespace='sim')),

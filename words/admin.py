@@ -1,5 +1,6 @@
 import json
 
+from django.http import JsonResponse
 from django.contrib import admin, messages
 from django.shortcuts import render, redirect
 from django.urls import path
@@ -40,13 +41,14 @@ class RealWordAdmin(admin.ModelAdmin):
         if len(obj.definition.split()) > 10:
             short_def += '...'
         return short_def
-    
+
     short_definition.short_description = 'Definition'
 
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
             path('import-json/', self.import_json, name='import_json'),
+            path('export-json/', self.export_json, name='export_json'),
         ]
         return custom_urls + urls
 
@@ -58,9 +60,9 @@ class RealWordAdmin(admin.ModelAdmin):
                 try:
                     data = json.load(json_file)
                     for word_data in data:
-                        # Создаем или получаем основной объект RealWord
-                        word, created = RealWord.objects.get_or_create(
-                            word=word_data['word'].lower(),
+                        # Найдем или создадим объект RealWord
+                        word, created = RealWord.objects.update_or_create(
+                            word=word_data['word'].lower(),  # Находим по слову
                             defaults={
                                 'transcription': word_data.get('transcription', ''),
                                 'definition': word_data.get('definition', ''),
@@ -70,15 +72,15 @@ class RealWordAdmin(admin.ModelAdmin):
 
                         # Обработка примеров
                         for example in word_data.get('examples', []):
-                            Example.objects.get_or_create(word=word, text=example)
+                            Example.objects.update_or_create(word=word, text=example)
 
                         # Обработка синонимов
                         for synonym in word_data.get('synonyms', []):
-                            Synonym.objects.get_or_create(word=word, text=synonym)
+                            Synonym.objects.update_or_create(word=word, text=synonym)
 
                         # Обработка антонимов
                         for antonym in word_data.get('antonyms', []):
-                            Antonym.objects.get_or_create(word=word, text=antonym)
+                            Antonym.objects.update_or_create(word=word, text=antonym)
 
                     messages.success(request, "Данные успешно импортированы из JSON файла!")
                     return redirect("..")
@@ -92,3 +94,19 @@ class RealWordAdmin(admin.ModelAdmin):
             form = JSONUploadForm()
 
         return render(request, 'admin/import_json.html', {'form': form})
+
+    def export_json(self, request):
+        words = RealWord.objects.all()
+        data = []
+        for word in words:
+            data.append({
+                'word': word.word,
+                'transcription': word.transcription,
+                'definition': word.definition,
+                'examples': [example.text for example in word.examples.all()],
+                'synonyms': [synonym.text for synonym in word.synonyms.all()],
+                'antonyms': [antonym.text for antonym in word.antonyms.all()],
+            })
+        response = JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False, 'indent': 2})
+        response['Content-Disposition'] = 'attachment; filename="realwords.json"'
+        return response

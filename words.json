@@ -1,26 +1,122 @@
 [
-    {
-        "word": "by",
-        "transcription": "baɪ",
-        "definition": "A preposition used to indicate the means or method by which something is done, or to express proximity or the agent performing an action. It can also suggest a time or place, indicating the agent or source of an action.",
-        "examples": [
-            "She traveled by train to work every day.",
-            "The book was written by a famous author.",
-            "I like to relax by the beach during the summer."
-        ],
-        "synonyms": ["through", "via", "with"],
-        "antonyms": ["away", "apart", "from"]
-    },
-    {
-        "word": "bye",
-        "transcription": "baɪ",
-        "definition": "A casual or informal way of saying farewell or goodbye, often used when parting with someone or leaving a place. It is commonly used in spoken language and informal written communication.",
-        "examples": [
-            "I have to leave now, bye!",
-            "We said our goodbyes and waved, 'bye' until next time.",
-            "After the meeting, everyone said their byes and left."
-        ],
-        "synonyms": ["goodbye", "farewell", "see you"],
-        "antonyms": ["hello", "greeting", "welcome"]
-    }
+  {
+    "word": "fascinating",
+    "transcription": "ˈfæsɪneɪtɪŋ",
+    "definition": "Extremely interesting or captivating, often in a way that grabs attention and holds it. A fascinating subject can spark deep curiosity and inspire further exploration. People often find certain hobbies or scientific fields fascinating because they lead to new discoveries.",
+    "examples": [
+      "The documentary on space exploration was absolutely fascinating.",
+      "She gave a fascinating lecture on the history of art.",
+      "The idea of traveling to Mars is truly fascinating to many people."
+    ],
+    "synonyms": ["captivating", "engrossing", "compelling"],
+    "antonyms": ["boring", "uninteresting", "dull"]
+  },
+  {
+    "word": "fashion",
+    "transcription": "ˈfæʃən",
+    "definition": "A popular or accepted style or trend, especially in clothing, accessories, or design, often seen as a way of expressing individuality or social status. Fashion can change quickly and is influenced by cultural, economic, and social factors. Designers, celebrities, and social media often dictate what is considered fashionable.",
+    "examples": [
+      "She is always up to date with the latest fashion trends.",
+      "Fashion plays a significant role in modern culture.",
+      "The fashion industry influences many aspects of society."
+    ],
+    "synonyms": ["style", "trend", "mode"],
+    "antonyms": ["outdated", "old-fashioned", "unfashionable"]
+  },
+  {
+    "word": "fashionable",
+    "transcription": "ˈfæʃənəbl",
+    "definition": "Being in style or popular at a particular time, often associated with modernity or social trends. A fashionable person is someone who keeps up with current styles and trends. Fashionable can also refer to things like home decor or gadgets that are trendy and widely accepted.",
+    "examples": [
+      "He wore a fashionable suit to the party.",
+      "Her outfit was stylish and very fashionable for the season.",
+      "The café has a fashionable vibe that attracts young people."
+    ],
+    "synonyms": ["stylish", "trendy", "chic"],
+    "antonyms": ["unfashionable", "outdated", "old-fashioned"]
+  },
+  {
+    "word": "fast",
+    "transcription": "fæst",
+    "definition": "Moving or happening with great speed or at a quick pace. Fast can refer to anything from physical movement to the speed at which something is completed. Many modern technologies are designed to be fast, such as high-speed internet and fast cars.",
+    "examples": [
+      "He is a fast runner and can complete the race in no time.",
+      "The car drove so fast that it was a blur on the road.",
+      "She finished the task very fast, much quicker than expected."
+    ],
+    "synonyms": ["quick", "rapid", "speedy"],
+    "antonyms": ["slow", "gradual", "leisurely"]
+  },
+  {
+    "word": "fasten",
+    "transcription": "ˈfæsən",
+    "definition": "To attach or secure something firmly, typically using buttons, hooks, or a similar fastening device. Fastening is often necessary to ensure safety, such as fastening a seatbelt while driving. The word can also refer to securing items together in a way that prevents them from coming apart.",
+    "examples": [
+      "Please fasten your seatbelt before the plane takes off.",
+      "He fastened the button on his jacket before leaving the house.",
+      "The teacher asked the students to fasten their notebooks closed."
+    ],
+    "synonyms": ["secure", "attach", "clasp"],
+    "antonyms": ["loosen", "unfasten", "detach"]
+  },
+  {
+    "word": "fat",
+    "transcription": "fæt",
+    "definition": "Having a large amount of excess flesh on the body, typically in a way that is considered undesirable or unhealthy. Fat can be a result of overeating or lack of physical activity, but it can also be an indicator of an individual's metabolism. However, not all fats are unhealthy, as some are essential for body functions.",
+    "examples": [
+      "He has gained a lot of weight and feels he is getting too fat.",
+      "The cat looks fat after being overfed for a few months.",
+      "Eating too much fast food can lead to fat accumulation in the body."
+    ],
+    "synonyms": ["overweight", "obese", "plump"],
+    "antonyms": ["thin", "slim", "lean"]
+  },
+  {
+    "word": "father",
+    "transcription": "ˈfɑːðər",
+    "definition": "A male parent, typically someone who is responsible for the care and upbringing of a child. A father plays a critical role in the emotional and financial support of the family. Fathers can influence their children’s values, behavior, and future decisions.",
+    "examples": [
+      "His father taught him how to ride a bicycle.",
+      "She has a deep respect for her father and all he has done for her.",
+      "The father and son went fishing together every weekend."
+    ],
+    "synonyms": ["dad", "paternal figure", "parent"],
+    "antonyms": ["mother", "child", "offspring"]
+  },
+  {
+    "word": "fault",
+    "transcription": "fɔːlt",
+    "definition": "A mistake, error, or defect that causes a problem or undesirable outcome. Fault can be attributed to people, systems, or situations that went wrong. It is important to identify the fault to correct it and prevent it from happening again in the future.",
+    "examples": [
+      "The accident was his fault for not paying attention while driving.",
+      "It's not your fault that things went wrong; there were many factors involved.",
+      "The company admitted fault in the defective product case."
+    ],
+    "synonyms": ["error", "blame", "flaw"],
+    "antonyms": ["correct", "perfection", "merit"]
+  },
+  {
+    "word": "favour",
+    "transcription": "ˈfeɪvər",
+    "definition": "An act of kindness or support, often one that is done for someone without expecting anything in return. Favour can also refer to a preference or special treatment given to someone. It often creates goodwill or strengthens personal relationships.",
+    "examples": [
+      "She did me a favour by picking up my dry cleaning.",
+      "He asked for a favour from his colleague to cover for him.",
+      "They helped us out with a favour when we needed it most."
+    ],
+    "synonyms": ["kindness", "support", "help"],
+    "antonyms": ["hindrance", "disfavor", "unhelpfulness"]
+  },
+  {
+    "word": "favourite",
+    "transcription": "ˈfeɪvərɪt",
+    "definition": "Something or someone that is preferred above all others, often regarded with particular affection or liking. A favourite can refer to a person, object, or activity that brings joy and comfort. It is something that consistently appeals to a person over time.",
+    "examples": [
+      "My favourite color is blue.",
+      "She is my favourite teacher because she makes learning fun.",
+      "Chocolate cake is my favourite dessert."
+    ],
+    "synonyms": ["preferred", "beloved", "best-loved"],
+    "antonyms": ["least favourite", "unpopular", "disliked"]
+  }
 ]

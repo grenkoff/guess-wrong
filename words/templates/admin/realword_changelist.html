@@ -1,8 +1,11 @@
 {% extends "admin/change_list.html" %}
 
-{% block object-tools %}
-  <div class="object-tools">
-    <a href="{% url 'admin:import_json' %}" class="button">Импортировать из JSON</a>
+{% block content %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex">
+      <a href="{% url 'admin:import_json' %}" class="button me-2">Импортировать из JSON</a>
+      <a href="{% url 'admin:export_json' %}" class="button">Экспортировать в JSON</a>
+    </div>
   </div>
   {{ block.super }}
 {% endblock %}

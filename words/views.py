@@ -68,20 +68,20 @@ def wordlist_view(request):
     return render(request, 'words/wordlist.html', context)
 
 
-def export_data_to_json(request):
-    # Получаем все данные из модели RealWord
-    words = RealWord.objects.all()
-    
-    # Сериализуем данные
-    serializer = RealWordSerializer(words, many=True)
-    data = serializer.data
-    
-    # Сохраняем JSON в файл
-    file_path = os.path.join(settings.MEDIA_ROOT, 'exported_data.json')
-    with open(file_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-    
-    return JsonResponse({'message': 'Data exported successfully!', 'file_path': file_path})
+# def export_data_to_json(request):
+#     # Получаем все данные из модели RealWord
+#     words = RealWord.objects.all()
+
+#     # Сериализуем данные
+#     serializer = RealWordSerializer(words, many=True)
+#     data = serializer.data
+
+#     # Сохраняем JSON в файл
+#     file_path = os.path.join(settings.MEDIA_ROOT, 'exported_data.json')
+#     with open(file_path, 'w', encoding='utf-8') as f:
+#         json.dump(data, f, ensure_ascii=False, indent=4)
+
+#     return JsonResponse({'message': 'Data exported successfully!', 'file_path': file_path})
 
 
 @csrf_exempt
