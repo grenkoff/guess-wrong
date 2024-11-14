@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-import dj_database_url
+# import dj_database_url
 
 # from environ import Env
 
@@ -108,22 +108,20 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = True
-if POSTGRES_LOCALLY is True:
-    DATABASES['default'] = dj_database_url.parse('postgresql://postgres:TuxhiPkTkvPxXqKOPMbtyxAIFQLumtWf@autorack.proxy.rlwy.net:13991/railway')
+# POSTGRES_LOCALLY = True
+# if POSTGRES_LOCALLY is True:
+#     DATABASES['default'] = dj_database_url.parse('postgresql://postgres:TuxhiPkTkvPxXqKOPMbtyxAIFQLumtWf@autorack.proxy.rlwy.net:13991/railway')
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': os.getenv('DB_PASSWORD_YO'),
-#         # 'HOST': 'postgres.railway.internal',
-#         'HOST': 'autorack.proxy.rlwy.net',
-#         'PORT': '5432',
-#         # 'PORT': '26651',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': os.environ['DB_PASSWORD_YO'],
+        'HOST': 'autorack.proxy.rlwy.net',
+        'PORT': '13991',
+    }
+}
 
 
 # Password validation
