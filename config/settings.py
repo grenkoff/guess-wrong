@@ -33,12 +33,15 @@ SECRET_KEY = 'django-insecure-9+yun)&cbts!sx934_pdi1*ti9a0%j73@r-g@6fkbrx80coy8#
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'guess-wrong.up.railway.app',
+    'https://guess-wrong.up.railway.app',
     'localhost',
     '127.0.0.1',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-
+    'guess-wrong.up.railway.app',
+    'https://guess-wrong.up.railway.app',
 ]
 
 
