@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GOOGLE_OAUTH_CLIENT_ID = os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
+GOOGLE_OAUTH_CLIENT_ID = os.environ['GOOGLE_OAUTH_CLIENT_ID']
 if not GOOGLE_OAUTH_CLIENT_ID:
     raise ValueError(
         'GOOGLE_OAUTH_CLIENT_ID is missing.' 
