@@ -40,7 +40,6 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'guess-wrong.up.railway.app',
     'https://guess-wrong.up.railway.app',
 ]
 
