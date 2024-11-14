@@ -1,0 +1,20 @@
+.bg-body-tertiary,
+.bg-body-tertiary .navbar-nav .nav-link,
+.bg-body-tertiary .navbar-brand,
+.bg-body-tertiary .navbar-text {
+  background-color: var(--flash) !important;
+  color: var(--night) !important;
+}
+
+.navbar-toggler {
+  top: 0%;
+}
+
+.custom-toggler {
+  height: 40px;
+  width: 50px;
+}
+
+.custom-toggler:focus {
+  box-shadow: none;
+}

@@ -1,0 +1,14 @@
+:root {
+  --ivory: #fffff0;
+  --lightgray: #d3d3d3;
+  --night: #000b29;
+  --phonebooth: #d70026;
+  --pearl: #f8f5f2;
+  --flash: #edb83d;
+}
+
+body {
+  background-color: var(--pearl);
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 20px;
+}

@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+import dj_database_url
+
+# from environ import Env
 
 from dotenv import load_dotenv
 
@@ -29,7 +32,14 @@ SECRET_KEY = 'django-insecure-9+yun)&cbts!sx934_pdi1*ti9a0%j73@r-g@6fkbrx80coy8#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+
+]
 
 
 # Application definition
@@ -43,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd Party
     'rest_framework',
+    'whitenoise.runserver_nostatic',
     # Local
     'words.apps.WordsConfig',
     'wrong.apps.WrongConfig',
@@ -59,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -92,6 +104,23 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+POSTGRES_LOCALLY = True
+if POSTGRES_LOCALLY is True:
+    DATABASES['default'] = dj_database_url.parse('postgresql://postgres:TuxhiPkTkvPxXqKOPMbtyxAIFQLumtWf@autorack.proxy.rlwy.net:13991/railway')
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': os.getenv('DB_PASSWORD_YO'),
+#         # 'HOST': 'postgres.railway.internal',
+#         'HOST': 'autorack.proxy.rlwy.net',
+#         'PORT': '5432',
+#         # 'PORT': '26651',
+#     }
+# }
 
 
 # Password validation
@@ -132,6 +161,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+# Whitenoise static stuff
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
