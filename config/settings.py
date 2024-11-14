@@ -34,6 +34,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'https://guesswrong.com',
+    'guesswrong.com',
     'guess-wrong.up.railway.app',
     'https://guess-wrong.up.railway.app',
     'localhost',
