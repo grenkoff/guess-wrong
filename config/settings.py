@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9+yun)&cbts!sx934_pdi1*ti9a0%j73@r-g@6fkbrx80coy8#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'https://guesswrong.com',
@@ -39,6 +39,8 @@ ALLOWED_HOSTS = [
     'https://guess-wrong.up.railway.app',
     'localhost',
     '127.0.0.1',
+    'testserver',
+    'www.testserver',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -56,9 +58,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # 3rd Party
     'rest_framework',
     'whitenoise.runserver_nostatic',
+    'django_check_seo',
     # Local
     'words.apps.WordsConfig',
     'wrong.apps.WrongConfig',
@@ -66,6 +70,8 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'play.apps.PlayConfig',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

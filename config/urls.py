@@ -30,6 +30,7 @@ urlpatterns = [
     path('import-json/', import_data_from_json, name='import_json'),
     path('', include('pages.urls', namespace='pages')),
     path('', include('sim.urls', namespace='sim')),
+    path("django-check-seo/", include("django_check_seo.urls")),
 ]
 
 handler404 = page_not_found
