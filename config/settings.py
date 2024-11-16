@@ -74,6 +74,8 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+DEFAULT_HTTP_PROTOCOL = 'https'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

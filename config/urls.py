@@ -24,9 +24,9 @@ from django.views.generic.base import TemplateView
 from pages.views import page_not_found
 from words.views import import_data_from_json #export_data_to_json,
 
-from .sitemaps import StaticViewSitemap
+from .sitemaps import StaticViewSitemap, WordViewSitemap
 
-sitemaps = {'static': StaticViewSitemap}
+sitemaps = {'static': StaticViewSitemap, 'words': WordViewSitemap}
 
 urlpatterns = [
     path('robots.txt', TemplateView.as_view(template_name='pages/robots.txt', content_type='text/plain')),

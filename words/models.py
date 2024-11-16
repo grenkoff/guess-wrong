@@ -33,3 +33,6 @@ class RealWord(models.Model):
 
     def __str__(self):
         return self.word
+
+    def get_absolute_url(self):
+        return f'/words/{self.word}/'
