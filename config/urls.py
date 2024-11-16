@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
+from django.views.generic.base import TemplateView
 
 from pages.views import page_not_found
 from words.views import import_data_from_json #export_data_to_json,
 
 urlpatterns = [
+    path('robots.txt', TemplateView.as_view(template_name='pages/robots.txt', content_type='text/plain')),
     path('admin/', admin.site.urls),
     path('words/', include('words.urls', namespace='words')),
     path('play/', include('play.urls', namespace='play')),
