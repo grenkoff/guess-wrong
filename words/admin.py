@@ -1,6 +1,7 @@
 import json
 
 from django.http import JsonResponse
+from django.db import transaction
 from django.contrib import admin, messages
 from django.shortcuts import render, redirect
 from django.urls import path
@@ -59,13 +60,9 @@ class RealWordAdmin(admin.ModelAdmin):
                 json_file = request.FILES['json_file']
                 try:
                     data = json.load(json_file)
-
-                    # Партии данных
-                    batch_size = 100  # Размер партии
-                    for i in range(0, len(data), batch_size):
-                        batch = data[i:i+batch_size]
-                        for word_data in batch:
-                            # Найдем или создадим объект RealWord
+                    with transaction.atomic():
+                        for word_data in data:
+                            # Создаем или обновляем основной объект RealWord
                             word, created = RealWord.objects.update_or_create(
                                 word=word_data['word'].lower(),  # Находим по слову
                                 defaults={
@@ -76,16 +73,28 @@ class RealWordAdmin(admin.ModelAdmin):
                             )
 
                             # Обработка примеров
-                            for example in word_data.get('examples', []):
-                                Example.objects.update_or_create(word=word, text=example)
+                            examples = word_data.get('examples', [])
+                            if examples:
+                                Example.objects.filter(word=word).delete()  # Удаляем старые примеры
+                                Example.objects.bulk_create([
+                                    Example(word=word, text=example) for example in examples
+                                ])
 
                             # Обработка синонимов
-                            for synonym in word_data.get('synonyms', []):
-                                Synonym.objects.update_or_create(word=word, text=synonym)
+                            synonyms = word_data.get('synonyms', [])
+                            if synonyms:
+                                Synonym.objects.filter(word=word).delete()  # Удаляем старые синонимы
+                                Synonym.objects.bulk_create([
+                                    Synonym(word=word, text=synonym) for synonym in synonyms
+                                ])
 
                             # Обработка антонимов
-                            for antonym in word_data.get('antonyms', []):
-                                Antonym.objects.update_or_create(word=word, text=antonym)
+                            antonyms = word_data.get('antonyms', [])
+                            if antonyms:
+                                Antonym.objects.filter(word=word).delete()  # Удаляем старые антонимы
+                                Antonym.objects.bulk_create([
+                                    Antonym(word=word, text=antonym) for antonym in antonyms
+                                ])
 
                     messages.success(request, "Данные успешно импортированы из JSON файла!")
                     return redirect("..")
@@ -95,6 +104,10 @@ class RealWordAdmin(admin.ModelAdmin):
                     messages.error(request, f"Отсутствует ключ в JSON: {e}")
                 except TypeError as e:
                     messages.error(request, f"Ошибка в структуре JSON: {e}")
+                except Exception as e:
+                    messages.error(request, f"Непредвиденная ошибка: {e}")
+            else:
+                messages.error(request, "Форма загрузки недействительна!")
         else:
             form = JSONUploadForm()
 
