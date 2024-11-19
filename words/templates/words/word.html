@@ -38,7 +38,7 @@
           <p class="mb-4">
             {% for synonym in synonyms %}
               {% if synonym.exists %}
-                <a href="{% url 'words:word_view' synonym.text|lower %}">{{ synonym.text|lower }}</a>
+                <a href="{% url 'words:word_view' synonym.text|lower %}" class="text-decoration-none">{{ synonym.text|lower }}</a>
               {% else %}
                 {{ synonym.text|lower }}
               {% endif %}
@@ -52,7 +52,7 @@
           <p class="mb-4">
             {% for antonym in antonyms %}
               {% if antonym.exists %}
-                <a href="{% url 'words:word_view' antonym.text|lower %}">{{ antonym.text|lower }}</a>
+                <a href="{% url 'words:word_view' antonym.text|lower %}" class="text-decoration-none">{{ antonym.text|lower }}</a>
               {% else %}
                 {{ antonym.text|lower }}
               {% endif %}
