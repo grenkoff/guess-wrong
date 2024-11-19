@@ -46,10 +46,10 @@ def word_view(request, word):
 
 
 def wordlist_view(request):
-    # Get all words from the database
-    words = RealWord.objects.all()
+    # Получение всех слов из базы данных
+    words = RealWord.objects.all().order_by('word')  # Сортируем слова по алфавиту
 
-    # Create a dictionary to organize words by their starting letter
+    # Создание словаря для организации слов по первой букве
     words_by_letter = {}
     for word in words:
         first_letter = word.word[0].upper()
@@ -57,8 +57,8 @@ def wordlist_view(request):
             words_by_letter[first_letter] = []
         words_by_letter[first_letter].append(word)
 
-    # List of letters for alphabet navigation
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    # Создаем список букв для навигации
+    alphabet = sorted(words_by_letter.keys())  # Убедимся, что ключи также отсортированы
 
     context = {
         'words_by_letter': words_by_letter,

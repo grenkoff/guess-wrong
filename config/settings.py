@@ -11,7 +11,7 @@ load_dotenv()
 # GOOGLE_OAUTH_CLIENT_ID = os.environ['GOOGLE_OAUTH_CLIENT_ID']
 # if not GOOGLE_OAUTH_CLIENT_ID:
 #     raise ValueError(
-#         'GOOGLE_OAUTH_CLIENT_ID is missing.' 
+#         'GOOGLE_OAUTH_CLIENT_ID is missing.'
 #         'Have you put it in a file at config/.env ?'
 #     )
 
