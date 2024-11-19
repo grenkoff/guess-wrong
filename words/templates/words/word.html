@@ -8,12 +8,12 @@
 {% block content %}
   <div class="container my-4">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-xxl-10 col-xl-10 col-lg-12 col-md-12 col-sm-12">
 
         <h1 class="mb-4 text-center">{{ word_page.word }}</h1>
 
         {% if word_page.transcription %}
-          <p class="mb-4 text-center">/ {{ word_page.transcription }} /</p>
+          <p class="mb-4 text-center">🇺🇸 [{{ word_page.transcription }}]</p>
         {% endif %}
 
         <p class="text-left">{{ word_page.definition|capfirst }}</p>
