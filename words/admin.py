@@ -1,6 +1,7 @@
 import json
 
 from django.http import JsonResponse
+from django.db import transaction
 from django.contrib import admin, messages
 from django.shortcuts import render, redirect
 from django.urls import path
@@ -59,28 +60,41 @@ class RealWordAdmin(admin.ModelAdmin):
                 json_file = request.FILES['json_file']
                 try:
                     data = json.load(json_file)
-                    for word_data in data:
-                        # Найдем или создадим объект RealWord
-                        word, created = RealWord.objects.update_or_create(
-                            word=word_data['word'].lower(),  # Находим по слову
-                            defaults={
-                                'transcription': word_data.get('transcription', ''),
-                                'definition': word_data.get('definition', ''),
-                                'image': word_data.get('image', None)
-                            }
-                        )
+                    with transaction.atomic():
+                        for word_data in data:
+                            # Создаем или обновляем основной объект RealWord
+                            word, created = RealWord.objects.update_or_create(
+                                word=word_data['word'].lower(),  # Находим по слову
+                                defaults={
+                                    'transcription': word_data.get('transcription', ''),
+                                    'definition': word_data.get('definition', ''),
+                                    'image': word_data.get('image', None)
+                                }
+                            )
 
-                        # Обработка примеров
-                        for example in word_data.get('examples', []):
-                            Example.objects.update_or_create(word=word, text=example)
+                            # Обработка примеров
+                            examples = word_data.get('examples', [])
+                            if examples:
+                                Example.objects.filter(word=word).delete()  # Удаляем старые примеры
+                                Example.objects.bulk_create([
+                                    Example(word=word, text=example) for example in examples
+                                ])
 
-                        # Обработка синонимов
-                        for synonym in word_data.get('synonyms', []):
-                            Synonym.objects.update_or_create(word=word, text=synonym)
+                            # Обработка синонимов
+                            synonyms = word_data.get('synonyms', [])
+                            if synonyms:
+                                Synonym.objects.filter(word=word).delete()  # Удаляем старые синонимы
+                                Synonym.objects.bulk_create([
+                                    Synonym(word=word, text=synonym) for synonym in synonyms
+                                ])
 
-                        # Обработка антонимов
-                        for antonym in word_data.get('antonyms', []):
-                            Antonym.objects.update_or_create(word=word, text=antonym)
+                            # Обработка антонимов
+                            antonyms = word_data.get('antonyms', [])
+                            if antonyms:
+                                Antonym.objects.filter(word=word).delete()  # Удаляем старые антонимы
+                                Antonym.objects.bulk_create([
+                                    Antonym(word=word, text=antonym) for antonym in antonyms
+                                ])
 
                     messages.success(request, "Данные успешно импортированы из JSON файла!")
                     return redirect("..")
@@ -90,10 +104,15 @@ class RealWordAdmin(admin.ModelAdmin):
                     messages.error(request, f"Отсутствует ключ в JSON: {e}")
                 except TypeError as e:
                     messages.error(request, f"Ошибка в структуре JSON: {e}")
+                except Exception as e:
+                    messages.error(request, f"Непредвиденная ошибка: {e}")
+            else:
+                messages.error(request, "Форма загрузки недействительна!")
         else:
             form = JSONUploadForm()
 
         return render(request, 'admin/import_json.html', {'form': form})
+
 
     def export_json(self, request):
         words = RealWord.objects.all()
