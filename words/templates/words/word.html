@@ -2,7 +2,7 @@
 {% load static %}
 {% load custom_filters %}
 {% block title %}
-  English word {{ word_page.word }}
+  {{ word_page.word|capfirst }} • English word • Meaning, examples, synonyms & antonyms
 {% endblock title %}
 
 {% block content %}
