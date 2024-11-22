@@ -19,10 +19,13 @@
         <p class="text-left">{{ word_page.definition|capfirst }}</p>
 
         {% if word_page.image %}
-          <div class="text-center mb-4">
-            <img src="{{ word_page.image.url }}" alt="Image of {{ word_page.word }}" class="img-fluid">
+          <div class="text-start mb-4">
+            <img src="{{ word_page.image.url }}" alt="English word {{ word_page.word|capfirst }}" 
+                class="img-fluid rounded me-3" style="width: 435px; height: 435px; object-fit: cover;">
           </div>
         {% endif %}
+
+
 
         {% if examples %}
           <h2>Examples</h2>
