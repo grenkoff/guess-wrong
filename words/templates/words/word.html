@@ -13,6 +13,10 @@
   <meta property="og:title" content="Word {{ word_page.word|upper }} → Meaning, examples, synonyms & antonyms">
 {% endblock og:title %}
 
+{% block og:description %}
+  <meta property="og:description" content="✅ Discover the meaning of the word '{{ word_page.word|upper }}' with detailed descriptions, examples, and synonyms. Expand your vocabulary effectively!">
+{% endblock og:description %}
+
 {% if word_page.image %}
   {% block og:image %}
     <meta property="og:image" content="{{ word_page.image.url }}">
