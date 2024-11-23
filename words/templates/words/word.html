@@ -10,9 +10,9 @@
 {% endblock description %}
 
 {% if word_page.image %}
-  {% block ogimage %}
+  {% block og:image %}
     <meta property="og:image" content="{{ word_page.image.url }}">
-  {% endblock ogimage %}
+  {% endblock og:image %}
 {% endif %}
 
 {% block content %}

@@ -14,7 +14,7 @@
       {% if is_home %}
         {{ home_view.domain }}, {{ home_view.title }}
       {% else %}
-        {% block title %}{% endblock %} • {{ home_view.domain }}
+        {% block title %}{% endblock title %} • {{ home_view.domain }}
       {% endif %}
     </title>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
     <meta property="og:locale" content="en">
     <meta property="og:site_name" content="GuessWrong, Dive into the words">
     <meta property="og:type" content="website">
-    {% block ogimage %}{% endblock %}
+    {% block og:image %}{% endblock og:image %}
     <meta name="twitter:card" content="summary_large_image">
     <script src="https://accounts.google.com/gsi/client" async></script>
     <link href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}" rel="stylesheet">
