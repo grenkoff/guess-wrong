@@ -2,8 +2,12 @@
 {% load static %}
 {% load custom_filters %}
 {% block title %}
-  {{ word_page.word|capfirst }} • English word • Meaning, examples, synonyms & antonyms
+  Word {{ word_page.word|upper }} • Meaning, examples, synonyms & antonyms
 {% endblock title %}
+
+{% block description %}
+  ✅ Discover the meaning of the word '{{ word_page.word|upper }}' with detailed descriptions, examples, and synonyms. Expand your vocabulary effectively!
+{% endblock description %}
 
 {% block content %}
   <div class="container my-4">
