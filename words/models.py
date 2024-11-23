@@ -29,6 +29,7 @@ class Antonym(models.Model):
 
 class RealWord(models.Model):
     word = models.CharField(max_length=50, unique=True)
+    meta_description = models.TextField(max_length=135, blank=True, null=True)
     transcription = models.CharField(max_length=50, blank=True, null=True)
     definition = models.TextField(max_length=1000)
     image = CloudinaryField('image', blank=True, null=True)
