@@ -27,7 +27,7 @@
     {% block og:title %}{% endblock og:title %}
     {% block og:description %}{% endblock og:description %}
     {% block og:image %}{% endblock og:image %}
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:url" content="{{ CANONICAL_URL }}">
     <meta property="og:image:type" content="image/webp">
     <meta name="twitter:card" content="summary_large_image">
     <script src="https://accounts.google.com/gsi/client" async></script>
