@@ -9,6 +9,10 @@
   ✅ Discover the meaning of the word '{{ word_page.word|upper }}' with detailed descriptions, examples, and synonyms. Expand your vocabulary effectively!
 {% endblock description %}
 
+{% block opengraphimage %}
+  <meta property="og:image" content="{% if word_page.image %}{{ word_page.image.url }}{% endif %}">
+{% endblock opengraphimage %}
+
 {% block content %}
   <div class="container my-4">
     <div class="row justify-content-center">
