@@ -29,7 +29,9 @@
       "@context": "http://schema.org",
       "@type": "Article",
       "name": "{{ word_page.word|capfirst }}",
-      "image": "{{ word_page.image.url }}",
+      {% if word_page.image %}
+        "image": "{{ word_page.image.url }}",
+      {% endif %}
       "url": "{{ CANONICAL_URL }}"
     }
   </script>
