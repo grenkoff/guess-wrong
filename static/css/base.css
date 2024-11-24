@@ -12,3 +12,13 @@ body {
   font-family: 'Ubuntu Mono', monospace;
   font-size: 20px;
 }
+
+.dotted-link {
+  text-decoration: none !important; /* Убираем стандартное подчеркивание */
+  border-bottom: 1px dotted #000 !important; /* Пунктирное подчеркивание */
+  padding-bottom: 2px !important; /* Отступ для визуального акцента */
+}
+
+.dotted-link:hover {
+  border-bottom: 1px solid #000; /* Меняем стиль на сплошную линию при наведении */
+}

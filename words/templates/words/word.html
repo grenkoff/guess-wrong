@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load custom_filters %}
+
 {% block title %}
   Word {{ word_page.word|upper }} → Meaning, examples, synonyms & antonyms
 {% endblock title %}
@@ -40,14 +41,35 @@
 {% block content %}
   <div class="container my-4">
     <div class="row justify-content-center">
-      <div class="col-xxl-10 col-xl-10 col-lg-12 col-md-12 col-sm-12">
+      <div class="col-xxl-3 col-xl-3">
+        <div class="sticky-top d-none d-xl-block" style="top: 20px;">
+          <div class="list-group mb-4">
+            {% if examples %}<a href="#meanings" class="list-group-item list-group-item-action dotted-link">Meanings</a>{% endif %}
+            {% if examples %}<a href="#examples" class="list-group-item list-group-item-action dotted-link">Examples</a>{% endif %}
+            {% if synonyms %}<a href="#synonyms" class="list-group-item list-group-item-action dotted-link">Synonyms</a>{% endif %}
+            {% if antonyms %}<a href="#antonyms" class="list-group-item list-group-item-action dotted-link">Antonyms</a>{% endif %}
+          </div>
+        </div>
+        
+        <div class="d-block d-xl-none">
+          <div class="list-group mb-4">
+            {% if examples %}<a href="#meanings" class="list-group-item list-group-item-action dotted-link">Meanings</a>{% endif %}
+            {% if examples %}<a href="#examples" class="list-group-item list-group-item-action dotted-link">Examples</a>{% endif %}
+            {% if synonyms %}<a href="#synonyms" class="list-group-item list-group-item-action dotted-link">Synonyms</a>{% endif %}
+            {% if antonyms %}<a href="#antonyms" class="list-group-item list-group-item-action dotted-link">Antonyms</a>{% endif %}
+          </div>
+        </div>
+        
+      </div>
 
+      <div class="col-xxl-9 col-xl-9">
         <h1 class="mb-4 text-center">{{ word_page.word }}</h1>
 
         {% if word_page.transcription %}
           <p class="mb-4 text-center">🇺🇸 [{{ word_page.transcription }}]</p>
         {% endif %}
 
+        <h2 id="meanings">Meanings</h2>
         <p class="text-left">{{ word_page.definition|capfirst }}</p>
 
         {% if word_page.image %}
@@ -57,10 +79,8 @@
           </div>
         {% endif %}
 
-
-
         {% if examples %}
-          <h2>Examples</h2>
+          <h2 id="examples">Examples</h2>
           <ul>
             {% for example in examples %}
               <li><i>{{ example.text|highlight_word:word_page.word|safe }}</i></li>
@@ -69,7 +89,7 @@
         {% endif %}
 
         {% if synonyms %}
-          <h2>Synonyms</h2>
+          <h2 id="synonyms">Synonyms</h2>
           <p class="mb-4">
             {% for synonym in synonyms %}
               {% if synonym.exists %}
@@ -83,7 +103,7 @@
         {% endif %}
 
         {% if antonyms %}
-          <h2>Antonyms</h2>
+          <h2 id="antonyms">Antonyms</h2>
           <p class="mb-4">
             {% for antonym in antonyms %}
               {% if antonym.exists %}
