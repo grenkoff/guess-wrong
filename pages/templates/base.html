@@ -38,6 +38,7 @@
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
     <link href="{% static 'css/play.css' %}" rel="stylesheet">
+    {% block schemaorg %}{% endblock schemaorg %}
   </head>
   <body>
     {% include 'navbar.html' %}

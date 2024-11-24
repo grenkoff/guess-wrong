@@ -23,6 +23,18 @@
   {% endblock og:image %}
 {% endif %}
 
+{% block schemaorg %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "name": "{{ word_page.word|capfirst }}",
+      "image": "{{ word_page.image.url }}",
+      "url": "{{ CANONICAL_URL }}"
+    }
+  </script>
+{% endblock schemaorg %}
+
 {% block content %}
   <div class="container my-4">
     <div class="row justify-content-center">
