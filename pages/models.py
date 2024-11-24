@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 
 
@@ -28,3 +30,7 @@ class HomePage(SingletonModel):
     def get_instance(cls):
         instance, created = cls.objects.get_or_create(id=1)
         return instance
+
+    @property
+    def current_year(self):
+        return date.today().year
