@@ -2,15 +2,56 @@
 {% load static %}
 {% block title %}
   {{ home_view.title }}
-{% endblock title%}
+{% endblock title %}
 
 {% block description %}
   ✅ Discover the meanings of the words with detailed descriptions, examples, and synonyms. Expand your vocabulary effectively!
 {% endblock description %}
 
 {% block content %}
-  <div>
-    <h1>{{ home_view.title }}</h1>
-    {{ home_view.description|safe }}
-  </div>
+<style>
+  .border-frame {
+    background-color: var(--ivory);
+    transition: background-color 0.2s ease;
+  }
+
+  .border-frame:hover {
+    background-color: var(--lightgray);
+  }
+
+  .hover-underline:hover .underline-word {
+    text-decoration: underline;
+  }
+
+  .no-underline {
+    text-decoration: none;
+  }
+</style>
+<div class="container mt-5">
+    <div class="row">
+        <!-- Левая рамка -->
+        <div class="col-md-8 mb-3">
+            <div class="border rounded p-4 text-center border-frame" style="height: 100%; min-height: 150px;">
+                <!-- Пустая рамка -->
+            </div>
+        </div>
+        <!-- Правая рамка -->
+        <div class="col-md-4 mb-3">
+            {% if random_word %}
+                <a href="{{ random_word.get_absolute_url }}" class="text-decoration-none hover-underline">
+                    <div class="border rounded p-4 text-center d-flex flex-column justify-content-center align-items-center border-frame" style="height: 100%; min-height: 150px;">
+                        <div class="display-3 mb-3">🎲</div>
+                        <span class="text-black fs-3 underline-word mb-2">{{ random_word.word }}<i class="bi bi-arrow-right-short ms-2 fs-4"></i>
+                        </span>
+                        <span class="text-black fs-5 no-underline">Discover this random word!</span>
+                    </div>
+                </a>
+            {% else %}
+                <div class="border border-primary rounded p-4 text-center d-flex flex-column justify-content-center align-items-center border-frame" style="height: 100%; min-height: 150px;">
+                    <p>Нет доступных слов для отображения.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock content %}

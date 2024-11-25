@@ -38,3 +38,10 @@ class RealWord(models.Model):
 
     def get_absolute_url(self):
         return f'/words/{self.word}/'
+
+    @staticmethod
+    def get_random_word():
+        # Получаем случайный идентификатор записи
+        random_id = RealWord.objects.values_list('id', flat=True).order_by('?').first()
+        # Извлекаем слово по случайному ID
+        return RealWord.objects.get(id=random_id) if random_id else None
