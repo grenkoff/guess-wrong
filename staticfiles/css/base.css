@@ -5,10 +5,13 @@
   --phonebooth: #d70026;
   --pearl: #f8f5f2;
   --flash: #edb83d;
+  --cotton: #f9f9ff;
+  --cream: #ebdcb2;
+  --whitish: #fcfdfe;
 }
 
 body {
-  background-color: var(--pearl);
+  background-color: #fcfdfe;
   font-family: 'Ubuntu Mono', monospace;
   font-size: 20px;
 }

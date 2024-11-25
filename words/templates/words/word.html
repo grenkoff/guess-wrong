@@ -40,6 +40,14 @@
 
 {% block content %}
   <div class="container my-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/words/">Words</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ word_page.word|capfirst }}</li>
+      </ol>
+    </nav>
+
     <div class="row justify-content-center">
       <div class="col-xxl-3 col-xl-3">
         <div class="sticky-top d-none d-xl-block" style="top: 20px;">
