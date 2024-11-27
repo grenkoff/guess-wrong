@@ -126,10 +126,6 @@ DATABASES = {
     }
 }
 
-# POSTGRES_LOCALLY = True
-# if POSTGRES_LOCALLY is True:
-#     DATABASES['default'] = dj_database_url.parse('postgresql://postgres:TuxhiPkTkvPxXqKOPMbtyxAIFQLumtWf@autorack.proxy.rlwy.net:13991/railway')
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
