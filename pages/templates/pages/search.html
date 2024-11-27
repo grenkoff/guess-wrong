@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Search page
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-xl-12">
+      <h1>Search result</h1>
+      {% if searched %}
+        <ul>
+          {% for word in searched %}
+            <li>
+              <a href="{{ word.get_absolute_url }}">{{ word.word }}</a>
+              <p>{{ word.definition }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        {{ message|safe }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}

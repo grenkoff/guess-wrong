@@ -1,10 +1,13 @@
 import os
 import json
+from itertools import chain
 
 from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q
 
 from .models import RealWord, Example, Synonym, Antonym
 from .serializers import RealWordSerializer
@@ -127,3 +130,30 @@ def import_data_from_json(request):
         return JsonResponse({'message': 'Data imported successfully!'})
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
+def search(request):
+    if request.method == 'POST':
+        searched_query = request.POST['searched'].strip()
+
+        # Получаем результаты сначала по слову, затем по определению
+        word_results = RealWord.objects.filter(word__icontains=searched_query)
+        definition_results = RealWord.objects.filter(
+            definition__icontains=searched_query
+        ).exclude(id__in=word_results)  # Исключаем дубликаты
+
+        # Объединяем результаты: сначала по слову, затем по определению
+        searched_results = list(chain(word_results, definition_results))
+
+        if not searched_results:
+            return render(request, 'pages/search.html', {
+                'message': f"Nothing found for the query <strong>{searched_query}</strong>. Please try again.",
+                'searched_query': searched_query
+            })
+        else:
+            return render(request, 'pages/search.html', {
+                'searched': searched_results,
+                'searched_query': searched_query
+            })
+    else:
+        return render(request, 'pages/search.html', {})

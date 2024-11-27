@@ -22,7 +22,7 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 
 from pages.views import page_not_found
-from words.views import import_data_from_json #export_data_to_json,
+from words.views import search, import_data_from_json #export_data_to_json,
 
 from .sitemaps import StaticViewSitemap, WordViewSitemap
 
@@ -38,7 +38,8 @@ urlpatterns = [
     path('import-json/', import_data_from_json, name='import_json'),
     path('', include('pages.urls', namespace='pages')),
     path('', include('sim.urls', namespace='sim')),
-    path("django-check-seo/", include("django_check_seo.urls")),
+    path('django-check-seo/', include('django_check_seo.urls')),
+    path('search/', search, name='search'),
 ]
 
 handler404 = page_not_found
