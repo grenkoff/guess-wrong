@@ -28,7 +28,27 @@ class Antonym(models.Model):
 
 
 class RealWord(models.Model):
+    PART_OF_SPEECH_CHOICES = [
+        ('noun', 'Noun'),
+        ('verb', 'Verb'),
+        ('adjective', 'Adjective'),
+        ('adverb', 'Adverb'),
+        ('pronoun', 'Pronoun'),
+        ('preposition', 'Preposition'),
+        ('conjunction', 'Conjunction'),
+        ('interjection', 'Interjection'),
+        ('numeral', 'Numeral'),
+        ('article', 'Article'),
+        ('determiner', 'Determiner'),
+    ]
+
     word = models.CharField(max_length=50, unique=True)
+    part_of_speech = models.CharField(
+        max_length=20,
+        choices=PART_OF_SPEECH_CHOICES,
+        blank=True,
+        null=True
+    )
     transcription = models.CharField(max_length=50, blank=True, null=True)
     definition = models.TextField(max_length=1000)
     image = CloudinaryField('image', blank=True, null=True)

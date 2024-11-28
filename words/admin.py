@@ -8,29 +8,26 @@ from django.urls import path
 from .models import RealWord, Example, Synonym, Antonym
 from .forms import JSONUploadForm
 
-
 class ExampleInline(admin.TabularInline):
     model = Example
     extra = 0
     fields = ('text',)
-
 
 class SynonymInline(admin.TabularInline):
     model = Synonym
     extra = 0
     fields = ('text',)
 
-
 class AntonymInline(admin.TabularInline):
     model = Antonym
     extra = 0
     fields = ('text',)
 
-
 @admin.register(RealWord)
 class RealWordAdmin(admin.ModelAdmin):
-    list_display = ('word','transcription', 'short_definition')
+    list_display = ('word', 'part_of_speech', 'transcription', 'short_definition')
     search_fields = ('word',)
+    list_filter = ('part_of_speech',)
     inlines = [ExampleInline, SynonymInline, AntonymInline]
     change_list_template = "admin/realword_changelist.html"
 
@@ -66,6 +63,7 @@ class RealWordAdmin(admin.ModelAdmin):
                             word, created = RealWord.objects.update_or_create(
                                 word=word_data['word'].lower(),  # Находим по слову
                                 defaults={
+                                    'part_of_speech': word_data.get('part_of_speech', ''),
                                     'transcription': word_data.get('transcription', ''),
                                     'definition': word_data.get('definition', ''),
                                     'image': word_data.get('image', None)
@@ -113,13 +111,13 @@ class RealWordAdmin(admin.ModelAdmin):
 
         return render(request, 'admin/import_json.html', {'form': form})
 
-
     def export_json(self, request):
         words = RealWord.objects.all()
         data = []
         for word in words:
             data.append({
                 'word': word.word,
+                'part_of_speech': word.part_of_speech,
                 'transcription': word.transcription,
                 'definition': word.definition,
                 'examples': [example.text for example in word.examples.all()],
