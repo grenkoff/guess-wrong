@@ -71,7 +71,8 @@
       </div>
 
       <div class="col-xxl-9 col-xl-9">
-        <h1 class="mb-4 text-center">{{ word_page.word }}</h1>
+        <h1 class="fs-6">Word <strong>{{ word_page.word|upper }}</strong>: meanings, synonyms & antonyms</h1>
+        <span class="mb-4 text-center d-block fs-1">{{ word_page.word }}</span>
 
         {% if word_page.transcription %}
           <p class="mb-4 text-center">🇺🇸 [{{ word_page.transcription }}]</p>
