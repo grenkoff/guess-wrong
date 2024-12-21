@@ -18,13 +18,3 @@
 .custom-toggler:focus {
   box-shadow: none;
 }
-
-.navbar {
-  height: 70px; /* Убедитесь, что навбар имеет фиксированную высоту */
-}
-
-.nav-item form {
-  height: 100%; /* Задает высоту формы, равную высоте навбара */
-  display: flex;
-  align-items: center;
-}
